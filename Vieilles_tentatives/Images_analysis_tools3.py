@@ -1,11 +1,15 @@
 import cv2
 import numpy as np
 
+print(cv2.__version__)
+
 # Open the video file
-cap = cv2.VideoCapture('/Users/abedard/Desktop/MATT technique/MATT 0-30°b.mp4')
+#cap = cv2.VideoCapture('/Users/abedard/Desktop/MATT technique/MATT 0-30°b.mp4')
+cap = cv2.VideoCapture('/Users/abedard/Desktop/MATT technique/MATT 30-0.mp4')
+
 
 # Initialize tracker and tracking flag
-tracker = cv2.TrackerCSRT_create()
+tracker = cv2.legacy.TrackerCSRT_create()
 tracking = False
 
 while cap.isOpened():
@@ -19,9 +23,6 @@ while cap.isOpened():
         if success:
             x, y, w, h = int(bbox[0]), int(bbox[1]), int(bbox[2]), int(bbox[3])
             cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-            # Calculate and draw the centroid
-            cx, cy = x + w // 2, y + h // 2
-            cv2.circle(frame, (cx, cy), 5, (0, 255, 0), -1)
         else:
             tracking = False
     else:
@@ -44,13 +45,6 @@ while cap.isOpened():
             # Calculate the bounding box of the circle
             x, y, w, h = cv2.boundingRect(circle_contour)
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-
-            # Calculate and draw the centroid
-            M = cv2.moments(circle_contour)
-            if M["m00"] != 0:
-                cx = int(M['m10'] / M['m00'])
-                cy = int(M['m01'] / M['m00'])
-                cv2.circle(frame, (cx, cy), 5, (0, 255, 0), -1)
 
             # Initialize the tracker with the first frame and bounding box
             tracker.init(frame, (x, y, w, h))
