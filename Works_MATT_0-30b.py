@@ -3,7 +3,7 @@ import cv2
 cap = cv2.VideoCapture('/Users/abedard/Desktop/MATT technique/MATT 0-30°b.mp4')
 #cap = cv2.VideoCapture('/Users/abedard/Desktop/MATT technique/MATT 30-0.mp4')
 # Initialisation du tracker
-tracker = cv2.TrackerCSRT_create()
+tracker = cv2.TrackerCSRT.create()
 tracking = False
 
 while cap.isOpened():
