@@ -26,9 +26,9 @@ P2_JD_50 = '/Users/abedard/Desktop/MATT technique/Test28mai/Utilise/P2_JD_50.MOV
 # ROI video_analyser(video_path=P2_JD_50, pixels_per_cm=23.8985, yellowLower=[7, 100, 100], yellowUp=[9, 255, 255])
 
 P2_JG_5 = '/Users/abedard/Desktop/MATT technique/Test28mai/Utilise/P2_JG_5.MOV'
-P2_JG_5N = '/Users/abedard/Desktop/MATT technique/Test28mai/Utilise/P2_JG_5N.MOV'
+P2_JG_5N = '/Users/abedard/Desktop/MATT technique/Test28mai/Utilise/P2_JG3_5N.MOV'
 P2_JG_50 = '/Users/abedard/Desktop/MATT technique/Test28mai/Utilise/P2_JG_50.MOV'
 
-# ROI video_analyser(video_path=P2_JD_5, pixels_per_cm=24.9828, yellowLower=[21, 100, 100], yellowUp=[40, 255, 255])
-video_analyser(video_path=P2_JD_5N, pixels_per_cm=25, yellowLower=[21, 100, 100], yellowUp=[40, 255, 255])
-# ROI video_analyser(video_path=P2_JD_50, pixels_per_cm=25.2401, yellowLower=[7, 100, 100], yellowUp=[9, 255, 255])
+# ROI video_analyser(video_path=P2_JG_5, pixels_per_cm=24.9828, yellowLower=[21, 100, 100], yellowUp=[40, 255, 255])
+video_analyser(video_path=P2_JG_5N, pixels_per_cm=25, yellowLower=[21, 100, 100], yellowUp=[40, 255, 255], ref_x=0, ref_y=0)
+# ROI video_analyser(video_path=P2_JG_50, pixels_per_cm=25.2401, yellowLower=[7, 100, 100], yellowUp=[9, 255, 255])
