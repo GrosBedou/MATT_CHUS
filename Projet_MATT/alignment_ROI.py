@@ -1,21 +1,17 @@
 import cv2
 import numpy as np
 
-# Read the images
 image1 = cv2.imread('/Users/abedard/Desktop/MATT technique/Test13juin/Frames/Zero degrée/P4_JD_5N.jpg', cv2.IMREAD_GRAYSCALE)
 image2 = cv2.imread('/Users/abedard/Desktop/MATT technique/Test13juin/Frames/Zero degrée/P4_JD_5.jpg', cv2.IMREAD_GRAYSCALE)
 
-# Function to select ROI
 def select_roi(image, window_name):
     roi = cv2.selectROI(window_name, image)
     cv2.destroyWindow(window_name)
     return roi
 
-# Select ROI for both images
 roi1 = select_roi(image1, "Select ROI for Image 1")
 roi2 = select_roi(image2, "Select ROI for Image 2")
 
-# Crop the images to the selected ROI
 x1, y1, w1, h1 = roi1
 cropped_image1 = image1[y1:y1+h1, x1:x1+w1]
 
@@ -27,12 +23,10 @@ orb = cv2.ORB_create()
 keypoints1, descriptors1 = orb.detectAndCompute(cropped_image1, None)
 keypoints2, descriptors2 = orb.detectAndCompute(cropped_image2, None)
 
-# Check if keypoints are detected
 if descriptors1 is None or descriptors2 is None:
     print("Not enough keypoints detected.")
     exit(1)
 
-# Match descriptors using BFMatcher
 bf = cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True)
 matches = bf.match(descriptors1, descriptors2)
 

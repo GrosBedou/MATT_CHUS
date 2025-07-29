@@ -62,7 +62,6 @@ def update_overlay(alpha_slider):
 # Create a trackbar to adjust the transparency
 cv2.createTrackbar('Transparency', 'Overlay', 50, 100, update_overlay)
 
-# Initial call to display the image
 update_overlay(50)
 
 print(f'X translation: {h[0, 2]} pixels')
